@@ -6,6 +6,10 @@ This PoC demonstrates how to express cybersecurity-related information using the
 
 - [x] Convert a control of cybersecurity standard (e.g., CSA Safe App Standard) into an **OSCAL catalog model**.
 - [x] Express it as a **markdown document**.
+- [x] Create a Profile from the Catalog model.
+- [x] Create a Component definition model based on the Profile model.
+- [ ] Create a System security plan model based on the Component definition model.
+- [ ] Build a simple website to visualise and interact with the generated System security plan model.
 
 ## Setup Instructions
 
