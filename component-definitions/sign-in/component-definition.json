@@ -1,0 +1,33 @@
+{
+  "component-definition": {
+    "uuid": "b58c5fea-7c80-4b65-944d-8808d33456ef",
+    "metadata": {
+      "title": "Generic component-definition created by trestle named sign-in.",
+      "last-modified": "2025-04-18T16:02:50.839659+08:00",
+      "version": "0.0.0",
+      "oscal-version": "1.1.3"
+    },
+    "components": [
+      {
+        "uuid": "44a39f52-3c13-45e4-99f6-a8b0442af5b6",
+        "type": "policy",
+        "title": "Multi-factor authentication policy",
+        "description": "This policy requires the use of multi-factor authentication for all users accessing sensitive data.",
+        "control-implementations": [
+          {
+            "uuid": "e04e312d-d636-4872-af8e-3607c2a7ebaf",
+            "source": "trestle://profiles/high-risk/profile.json",
+            "description": "insert title of authn-bp01",
+            "implemented-requirements": [
+              {
+                "uuid": "4e5daeec-5dc7-4529-a3d1-0fba55c3d530",
+                "control-id": "authn-bp01",
+                "description": "insert prose of authn-bp01"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
