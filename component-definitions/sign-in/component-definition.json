@@ -17,12 +17,12 @@
           {
             "uuid": "e04e312d-d636-4872-af8e-3607c2a7ebaf",
             "source": "trestle://profiles/high-risk/profile.json",
-            "description": "insert title of authn-bp01",
+            "description": "authn-bp01",
             "implemented-requirements": [
               {
                 "uuid": "4e5daeec-5dc7-4529-a3d1-0fba55c3d530",
                 "control-id": "authn-bp01",
-                "description": "insert prose of authn-bp01"
+                "description": "REPLACE_ME"
               }
             ]
           }
