@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>System and Control Implementation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .component {
+      background-color: #fff;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .component-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .component-title {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .component-description {
+      font-size: 1.1em;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .control-list {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .control {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .control-id {
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .control-title {
+      font-style: italic;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .description-input {
+      padding: 8px;
+      margin-top: 5px;
+      width: 280px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    #json-output {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.4s;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .slider-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    input:checked + .slider .slider-text {
+      content: "in-use";
+    }
+
+    input:not(:checked) + .slider .slider-text {
+      content: "not-used";
+    }
+
+  </style>
+</head>
+<body>
+  <h1>System and Control Implementations</h1>
+
+  <div id="components-container"></div>
+
+  <button id="show-json-btn">Show Updated JSON</button>
+
+  <div id="json-output"></div>
+
+  <script>
+    const jsonData = {
+      "system-security-plan": {
+        "system-implementation": {
+          "components": [
+            {
+              "uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19",
+              "type": "this-system",
+              "title": "sign-in",
+              "description": "Sign-in allows users to securely access their accounts by entering valid credentials, ensuring personalized and protected access to the application's features.",
+              "status": {
+                "state": "not-used"
+              }
+            }
+          ]
+        },
+        "control-implementation": {
+          "implemented-requirements": [
+            {
+              "control-id": "authn-bp01",
+              "by-components": [
+                {
+                  "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19",
+                  "description": "REPLACE_ME"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "catalog": {
+        "groups": [
+          {
+            "id": "authn",
+            "title": "Authentication",
+            "controls": [
+              {
+                "id": "authn-bp01",
+                "title": "Use at least 2 authentication factors"
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    function renderComponents(data) {
+      const container = document.getElementById('components-container');
+      container.innerHTML = '';
+
+      // Loop through system components to display each
+      data['system-security-plan']['system-implementation']['components'].forEach(component => {
+        const componentDiv = document.createElement('div');
+        componentDiv.classList.add('component');
+
+        // Component header (title + switch button)
+        const componentHeader = document.createElement('div');
+        componentHeader.classList.add('component-header');
+        componentHeader.innerHTML = `
+          <div class="component-title"><strong>System Component:</strong> ${component.title}</div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" ${component.status.state === 'operational' ? 'checked' : ''} />
+              <span class="slider">
+                <span class="slider-text">${component.status.state === 'operational' ? 'in-use' : 'not-used'}</span>
+              </span>
+            </label>
+          </div>
+        `;
+        componentDiv.appendChild(componentHeader);
+
+        // Component description
+        const componentDescription = document.createElement('div');
+        componentDescription.classList.add('component-description');
+        componentDescription.innerText = component.description;
+        componentDiv.appendChild(componentDescription);
+
+        // Control list (will be shown if in-use)
+        const controlListDiv = document.createElement('div');
+        controlListDiv.classList.add('control-list');
+
+        // Find the controls that are linked to this component
+        data['system-security-plan']['control-implementation']['implemented-requirements'].forEach(control => {
+          control['by-components'].forEach(comp => {
+            if (comp['component-uuid'] === component.uuid) {
+              const controlDiv = document.createElement('div');
+              controlDiv.classList.add('control');
+
+              const controlId = document.createElement('p');
+              controlId.classList.add('control-id');
+              controlId.innerText = `Control ID: ${control['control-id']}`;
+              controlDiv.appendChild(controlId);
+
+              // Find control title in catalog
+              const controlTitle = data['catalog']['groups'][0]['controls'].find(c => c['id'] === control['control-id']);
+              if (controlTitle) {
+                const titleElement = document.createElement('p');
+                titleElement.classList.add('control-title');
+                titleElement.innerText = `Title: ${controlTitle.title}`;
+                controlDiv.appendChild(titleElement);
+              }
+
+              const label = document.createElement('label');
+              label.setAttribute('for', `description-${control['control-id']}`);
+              label.innerText = 'Description:';
+              controlDiv.appendChild(label);
+
+              const input = document.createElement('input');
+              input.type = 'text';
+              input.id = `description-${control['control-id']}`;
+              input.classList.add('description-input');
+              input.value = comp['description'];  // Setting the description of the component here
+              controlDiv.appendChild(input);
+
+              controlListDiv.appendChild(controlDiv);
+            }
+          });
+        });
+
+        componentDiv.appendChild(controlListDiv);
+        container.appendChild(componentDiv);
+
+        // Add event listener to toggle control visibility based on switch state
+        const switchInput = componentHeader.querySelector('input');
+        const sliderText = componentHeader.querySelector('.slider-text');
+        switchInput.addEventListener('change', () => {
+          if (switchInput.checked) {
+            controlListDiv.style.display = 'block';
+            component.status.state = 'operational'; 
+            sliderText.textContent = 'in-use';
+          } else {
+            controlListDiv.style.display = 'none';
+            component.status.state = 'disposition';
+            sliderText.textContent = 'not-used';
+          }
+        });
+
+        // Set initial state based on the status
+        if (component.status.state === 'operational') {
+          controlListDiv.style.display = 'block';
+          sliderText.textContent = 'in-use';
+        } else {
+          controlListDiv.style.display = 'none';
+          sliderText.textContent = 'not-used';
+        }
+      });
+    }
+
+    function showUpdatedJson() {
+      document.querySelectorAll('.description-input').forEach(input => {
+        const id = input.id.replace('description-', '');
+        const control = jsonData['system-security-plan']['control-implementation']['implemented-requirements'].find(c => c['control-id'] === id);
+        if (control) {
+          control['by-components'][0]['description'] = input.value;
+        }
+      });
+
+      const output = document.getElementById('json-output');
+      output.style.display = 'block';
+      output.textContent = JSON.stringify(jsonData, null, 2);
+    }
+
+    document.getElementById('show-json-btn').addEventListener('click', showUpdatedJson);
+
+    renderComponents(jsonData);
+  </script>
+</body>
+</html>
