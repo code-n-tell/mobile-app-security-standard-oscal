@@ -42,33 +42,45 @@
     }
 
     .control-list {
-      display: none;
       margin-top: 10px;
     }
 
+    .control-group {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #fafafa;
+    }
+
+    .control-group-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     .control {
-      margin-left: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      margin-left: 10px;
     }
 
     .control-id {
       font-weight: bold;
       color: #555;
-      margin-bottom: 4px;
     }
 
     .control-title {
       font-style: italic;
       color: #777;
-      margin-bottom: 10px;
     }
 
-    .description-input {
+    textarea.description-input {
       padding: 8px;
-      margin-top: 5px;
-      width: 280px;
+      width: 100%;
+      resize: vertical;
       border-radius: 4px;
       border: 1px solid #ccc;
+      margin-top: 5px;
     }
 
     #json-output {
@@ -150,15 +162,6 @@
       font-size: 12px;
       font-weight: bold;
     }
-
-    input:checked + .slider .slider-text {
-      content: "in-use";
-    }
-
-    input:not(:checked) + .slider .slider-text {
-      content: "not-used";
-    }
-
   </style>
 </head>
 <body>
@@ -179,7 +182,43 @@
               "uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19",
               "type": "this-system",
               "title": "sign-in",
-              "description": "Sign-in allows users to securely access their accounts by entering valid credentials, ensuring personalized and protected access to the application's features.",
+              "description": "Sign-in allows users to securely access their accounts by entering valid credentials.",
+              "status": {
+                "state": "not-used"
+              }
+            },
+            {
+              "uuid": "1a39c0c2-aa03-4e39-8999-4f37b39eb59e",
+              "type": "this-system",
+              "title": "sign-out",
+              "description": "Sign-out allows the user to securely log out of their account.",
+              "status": {
+                "state": "not-used"
+              }
+            },
+            {
+              "uuid": "f0bf0e6d-166a-4d97-bd20-291f3d936e11",
+              "type": "this-system",
+              "title": "update-transfer-funds-limit",
+              "description": "Update transfer funds limit enables the user to modify their daily or per-transaction fund transfer limit.",
+              "status": {
+                "state": "not-used"
+              }
+            },
+            {
+              "uuid": "5eea2518-958e-4522-998c-7b1d3b8a443d",
+              "type": "this-system",
+              "title": "transfer-funds-overseas",
+              "description": "Transfer funds overseas allows the user to send money to international recipients.",
+              "status": {
+                "state": "not-used"
+              }
+            },
+            {
+              "uuid": "cf41d645-8707-47d2-aeab-456548566620",
+              "type": "this-system",
+              "title": "transfer-funds",
+              "description": "Transfer funds enables the user to move money between their own or other local bank accounts.",
               "status": {
                 "state": "not-used"
               }
@@ -188,27 +227,232 @@
         },
         "control-implementation": {
           "implemented-requirements": [
-            {
-              "control-id": "authn-bp01",
-              "by-components": [
-                {
-                  "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19",
-                  "description": "REPLACE_ME"
-                }
-              ]
-            }
+            { "control-id": "nsvhht7sd4", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "qcgx89zl5o", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "pqb0qi7okr", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "e48hmcjx1p", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "r6idjjby2a", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "qp7r18iubl", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "n2861v8xgq", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "6n8ee34tz8", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "ujgxs1ylyr", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "vjwjigrrpo", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "4q9digx63p", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "325uf1kfzj", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "0x198e8vuy", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "9h18cthtey", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "n7gjdkrytl", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "4l0cppfg5p", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "lmwapnb38v", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "x2povhu0jo", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "f1q7p58prw", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "bl2gotejhz", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "s8b8hh1wqg", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "8snpeem8r1", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "do2te6stqy", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "2miysqqq6z", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "9eeg5bi6ku", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "9rzlpdepse", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "xahj8w3kba", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "9jt0w5pepz", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "rnbhsdgmvo", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "2xyro2izqt", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "1eoqwjfldf", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "hnq68vjrbs", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "325uf1kfzj", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "0x198e8vuy", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "9h18cthtey", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "n7gjdkrytl", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "4l0cppfg5p", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "lmwapnb38v", "by-components": [{ "component-uuid": "1362a390-2d6c-43d4-bb80-deca4707bf19", "description": "REPLACE_ME" }] },
+            { "control-id": "g4zvf2x0rc", "by-components": [{ "component-uuid": "1a39c0c2-aa03-4e39-8999-4f37b39eb59e", "description": "REPLACE_ME" }] },
+            { "control-id": "9y77qgbmoj", "by-components": [{ "component-uuid": "1a39c0c2-aa03-4e39-8999-4f37b39eb59e", "description": "REPLACE_ME" }] },
+            { "control-id": "me0bkcwqsx", "by-components": [{ "component-uuid": "1a39c0c2-aa03-4e39-8999-4f37b39eb59e", "description": "REPLACE_ME" }] },
+            { "control-id": "f2h7bhxx0z", "by-components": [{ "component-uuid": "f0bf0e6d-166a-4d97-bd20-291f3d936e11", "description": "REPLACE_ME" }] },
+            { "control-id": "o82iv8wxdp", "by-components": [{ "component-uuid": "5eea2518-958e-4522-998c-7b1d3b8a443d", "description": "REPLACE_ME" }] },
+            { "control-id": "x4g767bab2", "by-components": [{ "component-uuid": "5eea2518-958e-4522-998c-7b1d3b8a443d", "description": "REPLACE_ME" }] },
+            { "control-id": "0vhc3tna6r", "by-components": [{ "component-uuid": "cf41d645-8707-47d2-aeab-456548566620", "description": "REPLACE_ME" }] },
+            { "control-id": "e5ihvr00jb", "by-components": [{ "component-uuid": "cf41d645-8707-47d2-aeab-456548566620", "description": "REPLACE_ME" }] },
+            { "control-id": "lmrsjbzr9g", "by-components": [{ "component-uuid": "cf41d645-8707-47d2-aeab-456548566620", "description": "REPLACE_ME" }] },
+            { "control-id": "wshnuhjap6", "by-components": [{ "component-uuid": "cf41d645-8707-47d2-aeab-456548566620", "description": "REPLACE_ME" }] }
           ]
         }
       },
       "catalog": {
         "groups": [
           {
-            "id": "authn",
-            "title": "Authentication",
-            "controls": [
+            "id": "sign-in",
+            "title": "Sign-in",
+            "groups": [
               {
-                "id": "authn-bp01",
-                "title": "Use at least 2 authentication factors"
+                "id": "component-01",
+                "title": "Guest"
+              },
+              {
+                "id": "component-02",
+                "title": "Multi-factor authentication",
+                "controls": [
+                  { "id": "nsvhht7sd4", "title": "Ensure at least {2} authentication factors"}
+                ]
+              },
+              {
+                "id": "component-05",
+                "title": "Password",
+                "controls": [
+                  { "id": "qcgx89zl5o", "title": "Ensure a minimum length of {12} characters" },
+                  { "id": "pqb0qi7okr", "title": "Ensure a maximum length of {x} characters" },
+                  { "id": "e48hmcjx1p", "title": "Disallow use of personal details, like {username, password}" },
+                  { "id": "r6idjjby2a", "title": "Disallow sequential patterns like {123456}" },
+                  { "id": "qp7r18iubl", "title": "Disallow repeated characters like {aaaaaa}" },
+                  { "id": "n2861v8xgq", "title": "Disallow common passwords like {Qwerty123}" },
+                  { "id": "6n8ee34tz8", "title": "Ensure credential is rotated every {365} days"}
+                ]
+              },
+              {
+                "id": "component-06",
+                "title": "One-time password",
+                "controls": [
+                  { "id": "ujgxs1ylyr", "title": "Ensure a minimum length of {6} characters" },
+                  { "id": "vjwjigrrpo", "title": "Ensure the credential is invalidated every {30} seconds" },
+                  { "id": "4q9digx63p", "title": "Ensure the credential is invalidated every {3} consecutive incorrect inputs are received"}
+                ]
+              },
+              {
+                "id": "component-07",
+                "title": "Biometrics",
+                "controls": [
+                  { "id": "325uf1kfzj", "title": "Ensure biometric operations occur within the device’s {Secure Element}" },
+                  { "id": "0x198e8vuy", "title": "Ensure biometric template never leaves the device" },
+                  { "id": "9h18cthtey", "title": "Ensure hardware-backed keys tied to biometrics are invalidated on biometric changes"}
+                ]
+              },
+              {
+                "id": "component-08",
+                "title": "Device location"
+              },
+              {
+                "id": "component-09",
+                "title": "Device type"
+              },
+              {
+                "id": "component-10",
+                "title": "Session id",
+                "controls": [
+                  { "id": "n7gjdkrytl", "title": "Disallow session ids that return HTTP response status code {401, 403}"},
+                  { "id": "4l0cppfg5p", "title": "Ensure session ids are generated using cryptographically secure random number generator with a minimum of {n}-bits of entropy"},
+                  { "id": "lmwapnb38v", "title": "Ensure session ids are transmitted through HTTP headers like {Authorization} or cookies with {HttpOnly, Secure} flags enabled"},
+                  { "id": "x2povhu0jo", "title": "Ensure session ids are generated using cryptographically strong algorithm, like {SHA-256}"},
+                  { "id": "f1q7p58prw", "title": "Ensure session ids are used over {HTTPs}"},
+                  { "id": "bl2gotejhz", "title": "Disallow storing session ids in persistent storage, like {localStorage, sessionStorage}"},
+                  { "id": "s8b8hh1wqg", "title": "Ensure valid session ids return HTTP response status code {200}"},
+                ]
+              },
+              {
+                "id": "component-11",
+                "title": "JWT token",
+                "controls": [
+                  { "id": "8snpeem8r1", "title": "Disallow invalid tokens that return HTTP response status code {401, 403}"},
+                  { "id": "do2te6stqy", "title": "Ensure tokens are transmitted through HTTP headers like {Authorization}"},
+                  { "id": "2miysqqq6z", "title": "Ensure bearer authentication is used over {HTTPs}"},
+                  { "id": "9eeg5bi6ku", "title": "Disallow the inclusion of sensitive data in a token, like {username, password}"},
+                  { "id": "9rzlpdepse", "title": "Disallow storing tokens in persistent storage, like {localStorage, sessionStorage}"},
+                  { "id": "xahj8w3kba", "title": "Ensure valid tokens return HTTP response status code {200}"},
+                  { "id": "9jt0w5pepz", "title": "Ensure tokens are signed using cryptographically strong algorithm, like {HS256}"},
+                  { "id": "rnbhsdgmvo", "title": "Disallow tokens signed using algorithm, like {none}"}
+                ]
+              },
+              {
+                "id": "component-12",
+                "title": "Credential stuffing prevention - access control",
+                "controls": [
+                  { "id": "2xyro2izqt", "title": "Ensure account access is rate limited with {3} tries every {10} minutes"},
+                  { "id": "1eoqwjfldf", "title": "Ensure account access is incrementally delayed after {3} consecutive incorrect attempts, with the delay increasing {base delay x multiplier ^ (attempt-1)} each time, capped at {1440} minutes"},
+                  { "id": "hnq68vjrbs", "title": "Ensure account access is suspended after {3} consecutive incorrect attempts"}
+                ]
+              },
+              {
+                "id": "component-13",
+                "title": "Anti-bot prevention - CAPTCHA"
+              },
+              {
+                "id": "component-14",
+                "title": "Error messages"
+              }
+            ]
+          },
+          {
+            "id": "sign-out",
+            "title": "Sign-out",
+            "groups": [
+              {
+                "id": "component-01",
+                "title": "Session id",
+                "controls": [
+                  { "id": "g4zvf2x0rc", "title": "Ensure user's session id is terminated and related data is invalidated after {n} seconds of logout / inactivity / app closure"},
+                ]
+              },
+              {
+                "id": "component-02",
+                "title": "JWT token",
+                "controls": [
+                  { "id": "9y77qgbmoj", "title": "Ensure user's token is terminated and related data is invalidated after {n} seconds of logout / inactivity / app closure"},
+                  { "id": "me0bkcwqsx", "title": "Ensure invalid tokens return HTTP response status code {401, 403}"}
+                ]
+              }
+            ]
+          },
+          {
+            "id": "update-transfer-funds-limit",
+            "title": "Update transfer funds limit",
+            "groups": [
+              {
+                "id": "component-01",
+                "title": "Fraud detection",
+                "controls": [
+                  { "id": "f2h7bhxx0z", "title": "Ensure a {12} hours cooling-off period"}
+                ]
+              }
+            ]
+          },
+          {
+            "id": "transfer-funds-overseas",
+            "title": "Transfer funds overseas",
+            "groups": [
+              {
+                "id": "component-01",
+                "title": "Fraud prevention",
+                "controls": [
+                  { "id": "o82iv8wxdp", "title": "Ensure overseas transfer is disabled by default"},
+                  { "id": "x4g767bab2", "title": "Ensure overseas transfer is enabled through MFA"}
+                ]
+              }
+            ]
+          },
+          {
+            "id": "transfer-funds",
+            "title": "Transfer funds",
+            "groups": [
+              {
+                "id": "component-01",
+                "title": "Session identifiers",
+                "controls": [
+                  { "id": "0vhc3tna6r", "title": "Ensure existing session identifier is replaced with a new session identifier after step-up authentication"},
+                  { "id": "e5ihvr00jb", "title": "Ensure user's session is terminated after {n} seconds of inactivity"}
+                ]
+              },
+              {
+                "id": "component-02",
+                "title": "Fraud prevention",
+                "controls": [
+                  { "id": "lmrsjbzr9g", "title": "Ensure a transaction exceeding ${n} is confirmed by user response within {n} seconds"}
+                ]
+              },
+              {
+                "id": "component-03",
+                "title": "Transaction history",
+                "controls": [
+                  { "id": "wshnuhjap6", "title": "Ensure account balance is updated within {n} seconds of a transaction"}
+                ]
               }
             ]
           }
@@ -216,16 +460,39 @@
       }
     };
 
+    function findControlGroupTitle(data, controlId) {
+      for (const group of data.catalog.groups) {
+        for (const sub of group.groups) {
+          if (sub.controls) {
+            if (sub.controls.find(c => c.id === controlId)) {
+              return sub.title;
+            }
+          }
+        }
+      }
+      return null;
+    }
+
+    function findControlTitle(data, controlId) {
+      for (const group of data.catalog.groups) {
+        for (const sub of group.groups) {
+          if (sub.controls) {
+            const control = sub.controls.find(c => c.id === controlId);
+            if (control) return control;
+          }
+        }
+      }
+      return null;
+    }
+
     function renderComponents(data) {
       const container = document.getElementById('components-container');
       container.innerHTML = '';
 
-      // Loop through system components to display each
       data['system-security-plan']['system-implementation']['components'].forEach(component => {
         const componentDiv = document.createElement('div');
         componentDiv.classList.add('component');
 
-        // Component header (title + switch button)
         const componentHeader = document.createElement('div');
         componentHeader.classList.add('component-header');
         componentHeader.innerHTML = `
@@ -241,64 +508,71 @@
         `;
         componentDiv.appendChild(componentHeader);
 
-        // Component description
         const componentDescription = document.createElement('div');
         componentDescription.classList.add('component-description');
         componentDescription.innerText = component.description;
         componentDiv.appendChild(componentDescription);
 
-        // Control list (will be shown if in-use)
         const controlListDiv = document.createElement('div');
         controlListDiv.classList.add('control-list');
 
-        // Find the controls that are linked to this component
+        // === GROUPED CONTROL DISPLAY ===
+        const groupedControls = {};
+
         data['system-security-plan']['control-implementation']['implemented-requirements'].forEach(control => {
           control['by-components'].forEach(comp => {
             if (comp['component-uuid'] === component.uuid) {
-              const controlDiv = document.createElement('div');
-              controlDiv.classList.add('control');
+              const groupTitle = findControlGroupTitle(data, control['control-id']) || 'Other';
 
-              const controlId = document.createElement('p');
-              controlId.classList.add('control-id');
-              controlId.innerText = `Control ID: ${control['control-id']}`;
-              controlDiv.appendChild(controlId);
-
-              // Find control title in catalog
-              const controlTitle = data['catalog']['groups'][0]['controls'].find(c => c['id'] === control['control-id']);
-              if (controlTitle) {
-                const titleElement = document.createElement('p');
-                titleElement.classList.add('control-title');
-                titleElement.innerText = `Title: ${controlTitle.title}`;
-                controlDiv.appendChild(titleElement);
+              if (!groupedControls[groupTitle]) {
+                groupedControls[groupTitle] = [];
               }
 
-              const label = document.createElement('label');
-              label.setAttribute('for', `description-${control['control-id']}`);
-              label.innerText = 'Description:';
-              controlDiv.appendChild(label);
-
-              const input = document.createElement('input');
-              input.type = 'text';
-              input.id = `description-${control['control-id']}`;
-              input.classList.add('description-input');
-              input.value = comp['description'];  // Setting the description of the component here
-              controlDiv.appendChild(input);
-
-              controlListDiv.appendChild(controlDiv);
+              groupedControls[groupTitle].push({
+                id: control['control-id'],
+                description: comp.description,
+                title: findControlTitle(data, control['control-id'])?.title || ''
+              });
             }
           });
+        });
+
+        Object.entries(groupedControls).forEach(([groupTitle, controls]) => {
+          const details = document.createElement('details');
+          details.classList.add('control-group');
+
+          const summary = document.createElement('summary');
+          summary.innerText = groupTitle;
+          summary.classList.add('control-group-title');
+          details.appendChild(summary);
+
+          controls.forEach(ctrl => {
+            const controlDiv = document.createElement('div');
+            controlDiv.classList.add('control');
+
+            controlDiv.innerHTML = `
+              <p class="control-id">Control ID: ${ctrl.id}</p>
+              <p class="control-title">Title: ${ctrl.title}</p>
+              <label for="description-${ctrl.id}">Description:</label>
+              <textarea id="description-${ctrl.id}" class="description-input" rows="3">${ctrl.description}</textarea>
+            `;
+
+            details.appendChild(controlDiv);
+          });
+
+          controlListDiv.appendChild(details);
         });
 
         componentDiv.appendChild(controlListDiv);
         container.appendChild(componentDiv);
 
-        // Add event listener to toggle control visibility based on switch state
         const switchInput = componentHeader.querySelector('input');
         const sliderText = componentHeader.querySelector('.slider-text');
+
         switchInput.addEventListener('change', () => {
           if (switchInput.checked) {
             controlListDiv.style.display = 'block';
-            component.status.state = 'operational'; 
+            component.status.state = 'operational';
             sliderText.textContent = 'in-use';
           } else {
             controlListDiv.style.display = 'none';
@@ -307,13 +581,11 @@
           }
         });
 
-        // Set initial state based on the status
+        // Initialize visibility
         if (component.status.state === 'operational') {
           controlListDiv.style.display = 'block';
-          sliderText.textContent = 'in-use';
         } else {
           controlListDiv.style.display = 'none';
-          sliderText.textContent = 'not-used';
         }
       });
     }
@@ -333,7 +605,6 @@
     }
 
     document.getElementById('show-json-btn').addEventListener('click', showUpdatedJson);
-
     renderComponents(jsonData);
   </script>
 </body>
